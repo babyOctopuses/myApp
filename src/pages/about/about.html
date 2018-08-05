@@ -1,0 +1,70 @@
+<script src="node_modules/chart.js/src/chart.js"></script>
+<ion-header>
+  <h2 padding>DashBoard</h2>
+</ion-header>
+
+<ion-content padding>
+          <ion-card>
+              <ion-card-header>
+                  <ion-item>
+                      <ion-avatar item-start>
+                          <ion-icon style="font-size: 50px" ios="ios-cart" md="md-cart"></ion-icon>
+                      </ion-avatar>
+                      <h2>Total Keuntungan</h2>
+                      <p>Rp00000000</p>
+                    </ion-item>    
+              </ion-card-header>
+          </ion-card>
+          <ion-card>
+                  <ion-card-header>
+                      <ion-item>
+                          <ion-avatar item-start>
+                              <ion-icon style="font-size: 50px" ios="ios-heart" md="md-heart"></ion-icon>
+                          </ion-avatar>
+                          <h2>Total Keuntungan</h2>
+                          <p>Rp00000000</p>
+                        </ion-item>  
+                    
+                  </ion-card-header>
+           </ion-card>
+                  <ion-card>
+                      <ion-card-content>
+                          <ion-item>
+                              <ion-avatar item-start>
+                                  <ion-icon style="font-size: 50px" ios="ios-cash" md="md-cash"></ion-icon>
+                              </ion-avatar>
+                              <h2>Total Keuntungan</h2>
+                              <p>Rp00000000</p>
+                            </ion-item>  
+                        
+                      </ion-card-content>
+                      </ion-card>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div style="display: block;">
+                          <canvas baseChart width="400" height="400"
+                                      [datasets]="lineChartData"
+                                      [labels]="lineChartLabels"
+                                      [options]="lineChartOptions"
+                                      [colors]="lineChartColors"
+                                      [legend]="lineChartLegend"
+                                      [chartType]="lineChartType"
+                                      (chartHover)="chartHovered($event)"
+                                      (chartClick)="chartClicked($event)"></canvas>
+                          </div>
+                        </div>
+                        <div class="col-md-6" style="margin-bottom: 10px">
+                          <table class="table table-responsive table-condensed">
+                            <tr>
+                              <th *ngFor="let label of lineChartLabels">{{label}}</th>
+                            </tr>
+                            <tr *ngFor="let d of lineChartData">
+                              <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+                            </tr>
+                          </table>
+                          <button (click)="randomize()">CLICK</button>
+                        </div>
+                      </div>
+</ion-content>
+
